@@ -7,7 +7,7 @@ import { AddSong } from "./pages/addSong";
 import { ListSong } from "./pages/listSong";
 import { ListAlbum } from "./pages/listAlbum";
 import { Sidebar } from "./components/Sidebar";
-export const url = "http://localhost:8000"
+export const url = "https://mini-spotify-backend.onrender.com"
 
 const App = () => {
   return (
