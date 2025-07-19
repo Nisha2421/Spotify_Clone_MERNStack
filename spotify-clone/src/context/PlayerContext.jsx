@@ -11,6 +11,7 @@ export const PlayerContextProvider = (props) => {
   const [albumsData, setAlbumsData] = useState([])
   const [track, setTrack] = useState(songsData[0]);
   const [playStatus, setPlayStatus] = useState(false);
+  const [isLoading, setIsLoading] = useState(true)
   const [time, setTime] = useState({
     currentTime: {
       second: 0,
@@ -53,18 +54,22 @@ export const PlayerContextProvider = (props) => {
   }
   const getSongsData = async () => {
     try {
+      setIsLoading(true)
       const response = await axios.get(`${url}/song/list`);
       
       setSongsData(response.data.songs)
       setTrack(response.data.songs[0])
+      setIsLoading(false)
     } catch (error) {
       
     }
   }
     const getAlbumsData = async () => {
     try {
+      setIsLoading(true)
       const response = await axios.get(`${url}/album/list`);
       setAlbumsData(response.data.album)
+      setIsLoading(false)
     } catch (error) {
       
     }
@@ -113,6 +118,7 @@ export const PlayerContextProvider = (props) => {
     playStatus,
     time,
     setTrack,
+    isLoading,
     setPlayStatus,
     setTime,
     playWidthId,

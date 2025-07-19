@@ -4,9 +4,12 @@ import { Sidebar } from "./components/Sidebar";
 import { Player } from "./components/Player";
 import Dispay from "./components/Dispay";
 import { PlayerContext } from "./context/PlayerContext";
+import { LoadingPage } from "../../../chat-app/client/src/pages/LoadingPage";
 const App = () => {
-  const {songsData, audioRef, track} = useContext(PlayerContext);
-  
+  const {songsData, audioRef, track, isLoading} = useContext(PlayerContext);
+  if(isLoading){
+    return  <LoadingPage />
+  }
 
   return (
     <div className="h-screen bg-black">
@@ -17,7 +20,7 @@ const App = () => {
             <Dispay />
           </div>
         </>
-      ) : null}
+      ) :null}
           <Player />
 
       <audio ref={audioRef} src={track? track.file: null} preload="auto"></audio>
