@@ -4,7 +4,7 @@ import { Sidebar } from "./components/Sidebar";
 import { Player } from "./components/Player";
 import Dispay from "./components/Dispay";
 import { PlayerContext } from "./context/PlayerContext";
-import { LoadingPage } from "../../../chat-app/client/src/pages/LoadingPage";
+import { LoadingPage } from "./components/LoadingPage";
 const App = () => {
   const {songsData, audioRef, track, isLoading} = useContext(PlayerContext);
   if(isLoading){
